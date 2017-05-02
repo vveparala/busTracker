@@ -1,0 +1,34 @@
+Project Description
+-------------------
+Goal -> To estimate number of passengers traveling in a bus.
+Platform -> Android App with a AWS/other backend.
+
+Android App
+-----------
+1. UI
+ a. Simple UI which can take a username as input username once chosen should be immutable
+ this username will be used to identify the user at backend
+ b.A status bar to show number of app users in the bus ?
+
+2. Services
+ a. Location Service
+ Periodically (2hz ?) collect speed, bearing and lat-long data and upload to backend every min.
+
+  b. Ground Truth Service
+  To know ground truth of many people are there in the bus use bluetooth service.
+  The app checks if its bluetooth is discoverable ( check when app starts ?) and periodically scans for devices.
+  The scan list is timestamped and sent to backend.
+
+
+Backend
+----------
+1. Collection -> collect all info into db ( data collection for analysis)
+    db schema ->
+2. Real time tracking/clustering algorithm.
+   From speed data maintain a window/graph of acceleration and break spikes for each user
+   a. cluster users based on location 15m radius ( location centroid is taken as bus position)
+   b. prune or move users from clusters if they have mismatched accel/break window ??
+
+frontend ?
+---------
+simple webpage to show buses on a map and no of passengers
