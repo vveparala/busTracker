@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from busrest.models import Record
+from django.template import Context, loader
+
 # Create your views here.
 import logging
 import json
@@ -27,3 +29,7 @@ def index(request):
 			logger.error(sys.exc_info())
 			return HttpResponse("Error in Json serialization or missing required fields",status=500)
 		return HttpResponse(request.body)
+
+def mapShow(request):
+		template=loader.get_template("busrest/tracker.html")
+		return HttpResponse(template.render())
