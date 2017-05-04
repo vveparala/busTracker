@@ -25,10 +25,21 @@ Backend
 1. Collection -> collect all info into db ( data collection for analysis)
     db schema ->
 2. Real time tracking/clustering algorithm.
-   From speed data maintain a window/graph of acceleration and break spikes for each user
+   From speed data maintain a window/graph of acceleration and break spikes for each user ??
    a. cluster users based on location 15m radius ( location centroid is taken as bus position)
    b. prune or move users from clusters if they have mismatched accel/break window ??
 
 frontend ?
 ---------
 simple webpage to show buses on a map and no of passengers
+
+
+
+
+Json format:
+------------
+{"user":"username",   // users name
+  "location_records":{"lat":1312,"long":12312,"speed":1312,"bearing":12312,"timestamp":} ,  // send location data every 30sec
+  "bluetooth_record":["myap","ap1", "ap2", "ap3",]    // send bluetooth record every min
+                      // "myap" should be the users bluetooth ap/mac id
+  }
